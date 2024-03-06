@@ -1,22 +1,20 @@
 #include "header.hpp"
-struct Task
+
+std::chrono::system_clock::time_point stringToTimePoint(const string &dueDate)
 {
-    string description;
-    string dueDate;
-    vector<Task> subTask;
+    std::tm tm = {};
+    std::stringstream ss(dueDate);
+    ss >> std::get_time(&tm, "%Y-%m-%d %H-%M-%S");
+    auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+    return tp;
+}
 
-    Task(string desc, string due, vector<Task> sub = vector<Task>()) : description(desc), dueDate(due), subTask(sub) {}
-};
-
-void printList(vector<Task> &str);
-
-void commands()
+bool isDueMoreThan24hours(const string &dueDate)
 {
-    cout << "1. Add Task "
-         << " 2. Move Done!! "
-         << " 3. What Date today? "
-         << " 4. Move Task "
-         << " 5. Exit " << endl;
+    auto dueTimePoint = stringToTimePoint(dueDate);
+    auto now = std::chrono::system_clock::now();
+    auto hours = std::chrono::duration_cast<std::chrono::hours>(now - dueTimePoint).count();
+    return hours > 24;
 }
 
 string getCurrentTime()
@@ -27,10 +25,11 @@ string getCurrentTime()
     ss << std::put_time(localtime(&in_time_t), "%Y-%m-%d %X");
     return ss.str();
 }
-void addTasks(vector<Task> &todayChallenges);
 
 void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, vector<Task> &unfinishedTask)
 {
+    moveOverdueTasks(todayChallenges, unfinishedTask);
+    loadTasks(todayChallenges,doneChallenges, unfinishedTask);
     cout << "=================================================================================================================================================" << endl;
     cout << "JUST DO IT \n";
     cout << "=================================================================================================================================================" << endl;
@@ -38,9 +37,6 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
     cout << endl;
     cout << endl;
     cout << endl;
-
-    // unfinishedTask.push_back("feed my dog");
-    // unfinishedTask.push_back("go for walk");
 
     while (true)
     {
@@ -63,6 +59,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
         cout << endl;
         cout << endl;
         cout << "=================================================================================================================================================" << endl;
+        cout << "COMMANDS" << endl;
         commands();
 
         cout << endl;
@@ -75,7 +72,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
 
         while (!validChoice)
         {
-            cout << "Please enter your choice : ";
+            cout << "Command : ";
             getline(cin, input);
 
             // Check if the input is exactly one character and is a digit or a valid menu option
@@ -93,12 +90,10 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
         switch (choice)
         {
         case '1':
-        {
             // Add task
             addTasks(todayChallenges);
-        }
 
-        break;
+            break;
         case '2':
         {
 
@@ -152,6 +147,10 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             break;
         }
         case '5':
+            moveOverdueTasks(todayChallenges, unfinishedTask);
+            cout << "Update Successfully" << endl;
+        case '6':
+            writeFile(todayChallenges, doneChallenges, unfinishedTask);
             cout << endl;
             cout << endl;
             cout << "Thank you for using my program!!!" << endl;
@@ -219,6 +218,129 @@ void printList(vector<Task> &str)
 {
     for (int i = 0; i < str.size(); i++)
     {
-        cout << i + 1 << ". " << str[i].description << " \t\t" << str[i].dueDate << endl;
+        cout << i + 1 << ". " << str[i].description << endl;
+        if (!str[i].subTask.empty())
+        {
+            int n = str[i].subTask.size();
+            for (int j = 0; j < n; j++)
+            {
+                cout << "\t" << i + 1 << "." << j + 1 << " " << str[i].subTask[j].description << endl;
+            }
+        }
+    }
+}
+
+void moveOverdueTasks(vector<Task> &todayChallenges, vector<Task> &unfinishedTask)
+{
+    auto it = todayChallenges.begin();
+    while (it != todayChallenges.end())
+    {
+        if (isDueMoreThan24hours(it->dueDate))
+        {
+            unfinishedTask.push_back(*it);
+            it = todayChallenges.erase(it);
+        }
+        else
+        {
+            ++it;
+        }
+    }
+}
+
+void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> &c)
+{
+    std::ofstream outFile("./doit-list/list.txt");
+    if (!outFile)
+    {
+        cout << "Error: Unable to open file" << endl;
+        return;
+    }
+
+    auto writeTasks = [&outFile](const vector<Task> &tasks, const string &listName)
+    {
+        outFile << listName << endl;
+        for (const auto &task : tasks)
+        {
+            outFile << task.description << "\n"
+                    << task.dueDate << "\n";
+            if (!task.subTask.empty())
+            {
+                for (const auto &subtask : task.subTask)
+                {
+                    outFile << "\t" << subtask.description << "\n"
+                            << "\t" << subtask.dueDate << "\n";
+                }
+            }
+            outFile << "----\n";
+        }
+    };
+
+    writeTasks(a, "Today Challenges");
+    outFile << "===========\n";
+    writeTasks(b, "Done Challenges");
+    outFile << "===========\n";
+    writeTasks(c, "Unfinished Challenges");
+    outFile << "===========\n";
+
+    outFile.close();
+}
+
+void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
+{
+    std::ifstream inFile("./doit-list/list.txt");
+    if (!inFile)
+    {
+        cout << "Error : Unable to open file" << endl;
+        return;
+    }
+
+    string line;
+    vector<Task> *currentList = nullptr;
+    while (getline(inFile, line))
+    {
+        if (line == "Today Challenges")
+        {
+            currentList = &a;
+        }
+        else if (line == "Done Challenges")
+        {
+            currentList = &b;
+        }
+        else if (line == "Unfinished Challenges")
+        {
+            currentList = &c;
+        }
+        else if (line == "----" || line == "===========")
+        {
+            continue;
+        }
+        else if (currentList != nullptr)
+        {
+            // parse line
+            string description = line;
+            if (!getline(inFile, line))
+                break;
+
+            string dueDate = line;
+            vector<Task> subTasks;
+            while (inFile.peek() == '\t')
+            {
+                string subTaskDescription, subTaskDueDate;
+
+                getline(inFile, line);
+                subTaskDescription = line.substr(1);
+
+                if (!getline(inFile, line))
+                    break;
+                subTaskDueDate = line.substr(1);
+                subTasks.push_back(Task(subTaskDescription, subTaskDueDate));
+            }
+            currentList->push_back(Task(description, dueDate, subTasks));
+
+            if (inFile.peek() == '-')
+            {
+                getline(inFile, line);
+            }
+        }
     }
 }

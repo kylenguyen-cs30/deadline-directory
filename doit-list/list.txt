@@ -1,0 +1,21 @@
+Today Challenges
+make a meal
+2024-03-05 22:26:49
+----
+do 1 leetcode problem
+2024-03-05 22:27:03
+	merge two array
+	2024-03-05 22:27:03
+----
+===========
+Done Challenges
+feed pets
+2024-03-05 22:27:19
+	dog
+	2024-03-05 22:27:19
+	cat
+	2024-03-05 22:27:19
+----
+===========
+Unfinished Challenges
+===========
