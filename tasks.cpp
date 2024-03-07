@@ -2,10 +2,12 @@
 
 std::chrono::system_clock::time_point stringToTimePoint(const string &dueDate)
 {
+  
     std::tm tm = {};
     std::stringstream ss(dueDate);
     ss >> std::get_time(&tm, "%Y-%m-%d %H-%M-%S");
     auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+    std::cout << "System Clock : " << tp << endl;
     return tp;
 }
 
@@ -249,7 +251,7 @@ void moveOverdueTasks(vector<Task> &todayChallenges, vector<Task> &unfinishedTas
 
 void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> &c)
 {
-    std::ofstream outFile("./doit-list/list.txt");
+    std::ofstream outFile("~/Developer/doit/doit-list/list.txt");
     if (!outFile)
     {
         cout << "Error: Unable to open file" << endl;
@@ -287,7 +289,7 @@ void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> 
 
 void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
 {
-    std::ifstream inFile("./doit-list/list.txt");
+    std::ifstream inFile("~/Developer/cpp/doit/doit-list/list.txt");
     if (!inFile)
     {
         cout << "Error : Unable to open file" << endl;
