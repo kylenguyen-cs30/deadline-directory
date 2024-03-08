@@ -49,7 +49,6 @@ string getCurrentTime()
 
 void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, vector<Task> &unfinishedTask)
 {
-    moveOverdueTasks(todayChallenges, unfinishedTask);
     loadTasks(todayChallenges, doneChallenges, unfinishedTask);
     cout << "=================================================================================================================================================" << endl;
     cout << "JUST DO IT \n";
@@ -61,6 +60,8 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
 
     while (true)
     {
+            moveOverdueTasks(todayChallenges, unfinishedTask);
+
         cout << "=================================================================================================================================================" << endl;
         cout << "Today Challenges \n";
         printList(todayChallenges);
@@ -115,7 +116,8 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
         case '1':
             // Add task
             addTasks(todayChallenges);
-
+            cout << endl;
+            cout << endl;
             break;
         case '2':
         {
@@ -138,17 +140,25 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             writeFile(todayChallenges, doneChallenges, unfinishedTask);
             cout << "Quick save successfully" << endl;
 
+            cout << endl;
+            cout << endl;
             break;
         case '4':
-        
+
             cout << "Delete Mode" << endl;
             deleteTask(todayChallenges);
 
+            cout << endl;
+            cout << endl;
             break;
-        
+
         case '5':
             moveOverdueTasks(todayChallenges, unfinishedTask);
             cout << "Update Successfully" << endl;
+
+            cout << endl;
+            cout << endl;
+            break;
         case '6':
             writeFile(todayChallenges, doneChallenges, unfinishedTask);
             cout << endl;
@@ -249,7 +259,7 @@ void moveOverdueTasks(vector<Task> &todayChallenges, vector<Task> &unfinishedTas
 
 void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> &c)
 {
-    string filePath = expandUserPath("~/Developer/cpp/doit/doit-list/list.txt");
+    string filePath = expandUserPath("~/Developer/cpp/deadline-director/doit-list/list.txt");
     std::ofstream outFile(filePath);
     if (!outFile)
     {
@@ -288,7 +298,7 @@ void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> 
 
 void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
 {
-    string filePath = expandUserPath("~/Developer/cpp/doit/doit-list/list.txt");
+    string filePath = expandUserPath("~/Developer/cpp/deadline-director/doit-list/list.txt");
     std::ifstream inFile(filePath);
     if (!inFile)
     {
@@ -389,10 +399,16 @@ void fromUnfishedToToday(vector<Task> &todayChallenges, vector<Task> &unfinished
     }
 }
 
-void deleteTask(vector<Task>&a){
+void deleteTask(vector<Task> &a)
+{
     cout << "Enter number: ";
     int i;
     cin >> i;
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    a.erase(a.begin() + (i-1));
+    a.erase(a.begin() + (i - 1));
+}
+
+
+void emptyAllDoneTask(vector<Task>&doneChallenge){
+
 }

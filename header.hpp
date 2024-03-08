@@ -48,7 +48,7 @@ void fromUnfishedToToday(vector<Task>&a, vector<Task>&b);
 //remove task
 void deleteTask(vector<Task>& a);
 // auto all task in DONE list after 24 hours
-
+void emptyAllDoneTask(vector<Task>&doneChallenges);
 
 
 

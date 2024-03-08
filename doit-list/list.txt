@@ -38,6 +38,15 @@ backend project
 	c++ and js
 	2024-03-07 19:06:10
 ----
+continue improve deadline director project
+2024-03-08 09:08:23
+	add "Add Task" functionality such as adding subtasks to already existing task. 
+	2024-03-08 09:08:23
+	add "Edit Task" to edit current task and corresponding subtask
+	2024-03-08 09:08:23
+	Add ability to let user know that they finished that subtask. 
+	2024-03-08 09:08:23
+----
 ===========
 Done Challenges
 do 1 leetcode
