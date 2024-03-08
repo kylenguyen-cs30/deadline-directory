@@ -9,6 +9,7 @@
 #include "iomanip"
 #include "sstream"
 #include "cassert"
+#include "cstdlib"
 
 using std::cin;
 using std::cout;
@@ -28,9 +29,9 @@ struct Task
 void commands()
 {
     cout << "1. Add Task "
-         << " 2. Move Done!! "
-         << " 3. What Date today? "
-         << " 4. Move Back Todaychallenges "
+         << " 2. Move!! "
+         << " 3. Quick save "
+         << " 4. Delete Task"
          << " 5. Update "
          << " 6. Exit " << endl;
 }
@@ -39,4 +40,16 @@ void printList(vector<Task> &str);
 void moveOverdueTasks(vector<Task> &todayChallenges, vector<Task> &unfinishedTask);
 void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> &c);
 void loadTasks( vector<Task>&a, vector<Task>&b, vector<Task>&c);
+string expandUserPath(const string & path);
+
+//move
+void fromTodayToDone(vector<Task>&a,vector<Task>&b);
+void fromUnfishedToToday(vector<Task>&a, vector<Task>&b);
+//remove task
+void deleteTask(vector<Task>& a);
+// auto all task in DONE list after 24 hours
+
+
+
+
 #endif // !DOIT_CPP

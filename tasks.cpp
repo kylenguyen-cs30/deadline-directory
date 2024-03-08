@@ -1,13 +1,32 @@
 #include "header.hpp"
 
+string expandUserPath(const string &path)
+{
+    if (!path.empty() && path[0] == '~')
+    {
+        // get home directory from HOME environment variable
+        char *home = getenv("HOME");
+        if (home)
+        {
+            return string(home) + path.substr(1);
+        }
+        else
+        {
+            cout << "path : " << path << endl;
+            return path;
+        }
+    }
+    cout << "path : " << path << endl;
+    return path;
+}
+
 std::chrono::system_clock::time_point stringToTimePoint(const string &dueDate)
 {
-  
+
     std::tm tm = {};
     std::stringstream ss(dueDate);
     ss >> std::get_time(&tm, "%Y-%m-%d %H-%M-%S");
     auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
-    std::cout << "System Clock : " << tp << endl;
     return tp;
 }
 
@@ -31,7 +50,7 @@ string getCurrentTime()
 void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, vector<Task> &unfinishedTask)
 {
     moveOverdueTasks(todayChallenges, unfinishedTask);
-    loadTasks(todayChallenges,doneChallenges, unfinishedTask);
+    loadTasks(todayChallenges, doneChallenges, unfinishedTask);
     cout << "=================================================================================================================================================" << endl;
     cout << "JUST DO IT \n";
     cout << "=================================================================================================================================================" << endl;
@@ -86,6 +105,8 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             else
             {
                 cout << "Invalid choice. Please enter a valid menu option." << endl;
+                cin.clear();
+                break;
             }
         }
 
@@ -98,56 +119,33 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             break;
         case '2':
         {
-
-            cout << endl;
-            cout << "Move Mode" << endl;
-            cout << "Please enter the task number: ";
-            int taskNum;
-            cin >> taskNum;
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-            if (taskNum > (todayChallenges.size() + 1))
+            int num;
+            cout << "Please choose directions\n";
+            cout << "1. Today Challenge -> Done!! "
+                 << "2. Unfinished -> Today Challenge" << endl;
+            cin >> num;
+            if (num == 1)
             {
-                cout << "invalid input. Please try again !!. index size is bigger" << endl;
-                break;
+                fromTodayToDone(todayChallenges, doneChallenges);
             }
             else
             {
-                doneChallenges.push_back(todayChallenges[taskNum - 1]);
-                todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
-                cout << "Operation Successfull !!" << endl;
-                cout << endl
-                     << endl;
+                fromUnfishedToToday(todayChallenges, unfinishedTask);
             }
         }
         break;
         case '3':
-
-            cout << "Today date " << endl;
+            writeFile(todayChallenges, doneChallenges, unfinishedTask);
+            cout << "Quick save successfully" << endl;
 
             break;
         case '4':
-        {
-
-            cout << "Move Mode" << endl;
-            cout << "Please enter the task: " << endl;
-            int taskNum;
-            cin >> taskNum;
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            if (taskNum > (unfinishedTask.size() + 1))
-            {
-                cout << "Invalid input. taskNum is bigger!!! " << endl;
-                break;
-            }
-            else
-            {
-                todayChallenges.push_back(unfinishedTask[taskNum - 1]);
-                unfinishedTask.erase(unfinishedTask.begin() + (taskNum - 1));
-                cout << "Operation Successfull !!" << endl;
-            }
+        
+            cout << "Delete Mode" << endl;
+            deleteTask(todayChallenges);
 
             break;
-        }
+        
         case '5':
             moveOverdueTasks(todayChallenges, unfinishedTask);
             cout << "Update Successfully" << endl;
@@ -155,7 +153,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             writeFile(todayChallenges, doneChallenges, unfinishedTask);
             cout << endl;
             cout << endl;
-            cout << "Thank you for using my program!!!" << endl;
+            cout << "Have a good day!!!" << endl;
             return;
 
         default:
@@ -251,7 +249,8 @@ void moveOverdueTasks(vector<Task> &todayChallenges, vector<Task> &unfinishedTas
 
 void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> &c)
 {
-    std::ofstream outFile("~/Developer/doit/doit-list/list.txt");
+    string filePath = expandUserPath("~/Developer/cpp/doit/doit-list/list.txt");
+    std::ofstream outFile(filePath);
     if (!outFile)
     {
         cout << "Error: Unable to open file" << endl;
@@ -289,7 +288,8 @@ void writeFile(const vector<Task> &a, const vector<Task> &b, const vector<Task> 
 
 void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
 {
-    std::ifstream inFile("~/Developer/cpp/doit/doit-list/list.txt");
+    string filePath = expandUserPath("~/Developer/cpp/doit/doit-list/list.txt");
+    std::ifstream inFile(filePath);
     if (!inFile)
     {
         cout << "Error : Unable to open file" << endl;
@@ -345,4 +345,54 @@ void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
             }
         }
     }
+}
+
+void fromTodayToDone(vector<Task> &todayChallenges, vector<Task> &doneChallenges)
+{
+    cout << endl;
+    cout << "Move Mode" << endl;
+    cout << "Please enter the task number: ";
+    int taskNum;
+    cin >> taskNum;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (taskNum > (todayChallenges.size() + 1))
+    {
+        cout << "invalid input. Please try again !!. index size is bigger" << endl;
+    }
+    else
+    {
+        doneChallenges.push_back(todayChallenges[taskNum - 1]);
+        todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
+        cout << "Operation Successfull !!" << endl;
+        cout << endl
+             << endl;
+    }
+}
+
+void fromUnfishedToToday(vector<Task> &todayChallenges, vector<Task> &unfinishedTask)
+{
+    cout << "Move Mode" << endl;
+    cout << "Please enter the task: " << endl;
+    int taskNum;
+    cin >> taskNum;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    if (taskNum > (unfinishedTask.size() + 1))
+    {
+        cout << "Invalid input. taskNum is bigger!!! " << endl;
+    }
+    else
+    {
+        todayChallenges.push_back(unfinishedTask[taskNum - 1]);
+        unfinishedTask.erase(unfinishedTask.begin() + (taskNum - 1));
+        cout << "Operation Successfull !!" << endl;
+    }
+}
+
+void deleteTask(vector<Task>&a){
+    cout << "Enter number: ";
+    int i;
+    cin >> i;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    a.erase(a.begin() + (i-1));
 }

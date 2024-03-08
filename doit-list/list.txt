@@ -1,20 +1,52 @@
 Today Challenges
-make a meal
-2024-03-05 22:26:49
+do homeworks
+2024-03-07 18:31:26
+	471 handout (at 13, need 16)
+	2024-03-07 18:31:26
+	471 lab group (04/02/2024)
+	2024-03-07 18:31:26
+	253 lab (03/30/2024)
+	2024-03-07 18:31:26
+	471 lab 2 HTTP GET/RESPONSE (03/13/2024)
+	2024-03-07 18:31:26
 ----
-do 1 leetcode problem
-2024-03-05 22:27:03
-	merge two array
-	2024-03-05 22:27:03
+Discord project
+2024-03-07 18:55:56
+	leetcode + chatgpt + discord
+	2024-03-07 18:55:56
+	discord + scheduler
+	2024-03-07 18:55:56
+----
+apply job/interns
+2024-03-07 18:56:31
+----
+blockchain projects
+2024-03-07 18:56:45
+----
+check graduation info
+2024-03-07 18:56:58
+----
+make appointment with cs advisor
+2024-03-07 19:04:07
+----
+algo mind project
+2024-03-07 19:04:18
+----
+backend project
+2024-03-07 19:06:10
+	golang
+	2024-03-07 19:06:10
+	planetscale
+	2024-03-07 19:06:10
+	c++ and js
+	2024-03-07 19:06:10
 ----
 ===========
 Done Challenges
-feed pets
-2024-03-05 22:27:19
-	dog
-	2024-03-05 22:27:19
-	cat
-	2024-03-05 22:27:19
+do 1 leetcode
+2024-03-07 19:07:06
+	merge 2 sorted arrays
+	2024-03-07 19:07:06
 ----
 ===========
 Unfinished Challenges
