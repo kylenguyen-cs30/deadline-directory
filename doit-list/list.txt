@@ -17,9 +17,6 @@ Discord project
 	discord + scheduler
 	2024-03-07 18:55:56
 ----
-apply job/interns
-2024-03-07 18:56:31
-----
 blockchain projects
 2024-03-07 18:56:45
 ----
@@ -47,6 +44,9 @@ do 1 leetcode
 2024-03-07 19:07:06
 	merge 2 sorted arrays
 	2024-03-07 19:07:06
+----
+apply job/interns
+2024-03-07 18:56:31
 ----
 ===========
 Unfinished Challenges
