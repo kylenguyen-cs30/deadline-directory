@@ -60,22 +60,26 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
 
     while (true)
     {
-            moveOverdueTasks(todayChallenges, unfinishedTask);
+        moveOverdueTasks(todayChallenges, unfinishedTask);
+        emptyAllDoneTask(doneChallenges);
 
         cout << "=================================================================================================================================================" << endl;
         cout << "Today Challenges \n";
+        cout << endl;
         printList(todayChallenges);
         cout << endl;
         cout << endl;
         cout << endl;
         cout << "=================================================================================================================================================" << endl;
         cout << "DONES!!! \n";
+        cout << endl;
         printList(doneChallenges);
         cout << endl;
         cout << endl;
         cout << endl;
         cout << "=================================================================================================================================================" << endl;
         cout << "UNFINISHED \n";
+        cout << endl;
         printList(unfinishedTask);
         cout << endl;
         cout << endl;
@@ -154,6 +158,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
 
         case '5':
             moveOverdueTasks(todayChallenges, unfinishedTask);
+            emptyAllDoneTask(doneChallenges);
             cout << "Update Successfully" << endl;
 
             cout << endl;
@@ -198,7 +203,7 @@ void addTasks(vector<Task> &todayChallenges)
         cout << "1. Continue (add another sub task) " << endl
              << "2. Stop (finish adding)" << endl
              << "3. Cancel (remove the last subttrack entered)" << endl;
-        cout << "choice: " ;
+        cout << "choice: ";
         int choice;
         cin >> choice;
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -215,7 +220,9 @@ void addTasks(vector<Task> &todayChallenges)
                 cin >> subTaskChoice;
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
-        }else{
+        }
+        else
+        {
             cout << "Error please enter your choice again" << endl;
             cin.clear();
             cout << endl;
@@ -399,6 +406,7 @@ void fromUnfishedToToday(vector<Task> &todayChallenges, vector<Task> &unfinished
     }
     else
     {
+        unfinishedTask[taskNum - 1].dueDate = getCurrentTime();
         todayChallenges.push_back(unfinishedTask[taskNum - 1]);
         unfinishedTask.erase(unfinishedTask.begin() + (taskNum - 1));
         cout << "Operation Successfull !!" << endl;
@@ -414,7 +422,18 @@ void deleteTask(vector<Task> &a)
     a.erase(a.begin() + (i - 1));
 }
 
-
-void emptyAllDoneTask(vector<Task>&doneChallenge){
-
+void emptyAllDoneTask(vector<Task> &doneChallenge)
+{
+    auto it = doneChallenge.begin();
+    while (it != doneChallenge.end())
+    {
+        if (isDueMoreThan24hours(it->dueDate))
+        {
+            it = doneChallenge.erase(it);
+        }
+        else
+        {
+            it++;
+        }
+    }
 }
