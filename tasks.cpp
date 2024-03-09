@@ -198,6 +198,7 @@ void addTasks(vector<Task> &todayChallenges)
         cout << "1. Continue (add another sub task) " << endl
              << "2. Stop (finish adding)" << endl
              << "3. Cancel (remove the last subttrack entered)" << endl;
+        cout << "choice: " ;
         int choice;
         cin >> choice;
         cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -214,6 +215,11 @@ void addTasks(vector<Task> &todayChallenges)
                 cin >> subTaskChoice;
                 cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             }
+        }else{
+            cout << "Error please enter your choice again" << endl;
+            cin.clear();
+            cout << endl;
+            cout << endl;
         }
     }
 
