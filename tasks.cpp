@@ -150,7 +150,20 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
         case '4':
 
             cout << "Delete Mode" << endl;
-            deleteTask(todayChallenges);
+            cout << "1. Today Challenges "
+                 << " 2. Unfinished Task" << endl;
+            int choice;
+            cin >> choice;
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+            if (choice == 1)
+            {
+                deleteTask(todayChallenges);
+            }
+            else
+            {
+                deleteTask(unfinishedTask);
+            }
 
             cout << endl;
             cout << endl;
