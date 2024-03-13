@@ -170,6 +170,14 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             break;
 
         case '5':
+            cout << endl
+                 << "You are editing on Today Challenges" << endl;
+
+            editTask(todayChallenges);
+
+            break;
+
+        case '6':
             moveOverdueTasks(todayChallenges, unfinishedTask);
             emptyAllDoneTask(doneChallenges);
             cout << "Update Successfully" << endl;
@@ -177,7 +185,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             cout << endl;
             cout << endl;
             break;
-        case '6':
+        case '7':
             writeFile(todayChallenges, doneChallenges, unfinishedTask);
             cout << endl;
             cout << endl;
@@ -215,7 +223,7 @@ void addTasks(vector<Task> &todayChallenges)
         subTasks.push_back(Task(subDesc, subDueDate));
         cout << "1. Continue (add another sub task) " << endl
              << "2. Stop (finish adding)" << endl
-             << "3. Cancel (remove the last subttrack entered)" << endl;
+             << "3. Cancel (remove the last sub-task entered)" << endl;
         cout << "choice: ";
         int choice;
         cin >> choice;
@@ -448,5 +456,67 @@ void emptyAllDoneTask(vector<Task> &doneChallenge)
         {
             it++;
         }
+    }
+}
+
+void editTask(vector<Task> &task)
+{
+    // return if vector is empty
+    if (task.size() == 0)
+    {
+        return;
+    }
+
+    cout << endl
+         << "Enter the task number that you want to edit " << endl;
+    cout << "Number: ";
+    string num;
+    cin >> num;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    int taskNum = 0;
+    int subTask = 0;
+
+    if (num.size() == 1)
+    {
+        int taskNum = stoi(num);
+    }
+    else
+    {
+        const char *ch = num.c_str();
+        int taskNum = ch[0];
+        int subTasknum = ch[2];
+    }
+
+    
+    // just change the current task
+    if (subTask == 0)
+    {
+        int ans = 0;
+        if (!task[taskNum].subTask.empty())
+        {
+            cout << endl
+                 << "Attach the current sub task to the new task" << endl;
+            cout << "1. Yes 2. No";
+            cin >> ans;
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+
+
+        if (ans == 1)
+        {
+            //working on the logic
+        }
+        else
+        {
+            task.erase(task.end() + (taskNum - 1));
+            addTasks(task);
+        }
+    }
+    else
+    {
+        // change the subtask
+
+        
     }
 }
