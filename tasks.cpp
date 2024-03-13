@@ -141,7 +141,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
         }
         break;
         case '3':
-            writeFile(todayChallenges, doneChallenges, unfinishedTask);
+
             cout << "Quick save successfully" << endl;
 
             cout << endl;
@@ -178,6 +178,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             break;
 
         case '6':
+            writeFile(todayChallenges, doneChallenges, unfinishedTask);
             moveOverdueTasks(todayChallenges, unfinishedTask);
             emptyAllDoneTask(doneChallenges);
             cout << "Update Successfully" << endl;
@@ -488,7 +489,6 @@ void editTask(vector<Task> &task)
         int subTasknum = ch[2];
     }
 
-    
     // just change the current task
     if (subTask == 0)
     {
@@ -502,10 +502,9 @@ void editTask(vector<Task> &task)
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
 
-
         if (ans == 1)
         {
-            //working on the logic
+            // working on the logic
         }
         else
         {
@@ -516,7 +515,5 @@ void editTask(vector<Task> &task)
     else
     {
         // change the subtask
-
-        
     }
 }

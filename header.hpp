@@ -30,7 +30,7 @@ void commands()
 {
     cout << "1. Add Task "
          << " 2. Move!! "
-         << " 3. Quick save "
+         << " 3. Quick save (moved to Update) "
          << " 4. Delete Task(still working on adding delete subtask)"
          << endl;
 
