@@ -1,7 +1,4 @@
 Today Challenges
-revise resume with Daniel's example. 
-2024-03-13 10:52:59
-----
 Discord project
 2024-03-13 22:12:56
 	leetcode + chatgpt + discord
@@ -24,23 +21,22 @@ code DFS, BFS, and other search algorithms in different languages
 	javascript
 	2024-03-08 15:34:05
 ----
+algo mind project
+2024-03-14 13:24:36
+----
+make appointment with cs advisor
+2024-03-14 13:24:36
+----
+algo mind project
+2024-03-14 13:25:22
+----
 ===========
 Done Challenges
 ===========
 Unfinished Challenges
-algo mind project
-2024-03-11 11:09:38
-----
 make appointment with cs advisor
 2024-03-12 09:43:31
 ----
-project intern_application
-2024-03-08 20:27:55
-	create database
-	2024-03-08 20:27:55
-	make main.cpp to connect database
-	2024-03-08 20:27:55
-----
 backend project
 2024-03-09 20:48:41
 	golang
@@ -95,7 +91,7 @@ backend project
 	c++ and js
 	2024-03-07 19:06:10
 ----
-algo mind project
-2024-03-11 11:09:38
+revise resume with Daniel's example. 
+2024-03-13 10:52:59
 ----
 ===========

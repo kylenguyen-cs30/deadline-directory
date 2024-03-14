@@ -132,7 +132,7 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             cin >> num;
             if (num == 1)
             {
-                moveTask(todayChallenges, doneChallenges);
+                moveTask(doneChallenges,todayChallenges);
             }
             else
             {
@@ -544,29 +544,24 @@ void moveTask(vector<Task>&a, vector<Task>&b){
 
     vector<Task> temp;
     temp = b;
-
-    for (int i = 0; i < temp.size(); i++)
-    {
-        cout << i + 1 << ". " << temp[i].description << endl;
-    }
-    
     std::istringstream ss(taskNum);
     string token;
-    while (std::getline(ss, token, ','))
-    {
-        int taskNum = stoi(token);
-        cout << taskNum << endl;
-        if (taskNum > b.size())
-        {
-            cout << "invalid input. Please try again !!. index size is bigger. Index : " << taskNum  << endl;
-        }else
-        {
-            a.push_back(temp[taskNum - 1]);
-            b.erase(b.begin() + (taskNum - 1));
-        }
+    // while (std::getline(ss, token, ','))
+    // {
+    //     int taskNum = stoi(token);
+    //     cout << taskNum << endl;
+    //     if (taskNum > b.size())
+    //     {
+    //         cout << "invalid input. Please try again !!. index size is bigger. Index : " << taskNum  << endl;
+    //     }else
+    //     {
+    //         temp[taskNum - 1].dueDate = getCurrentTime();
+    //         a.push_back(temp[taskNum - 1]);
+    //         b.erase(b.begin() + (taskNum - 1));
+    //     }
         
         
-    }
+    // }
 
     cout << "Operation Successfull !!" << endl;
     cout << endl
