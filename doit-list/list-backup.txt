@@ -6,44 +6,43 @@ Discord project
 	discord + scheduler
 	2024-03-07 18:55:56
 ----
+apply jobs
+2024-03-13 22:13:19
+----
 do 1 leetcode
 2024-03-13 22:13:32
 ----
-blockchain projects
-2024-03-14 13:44:00
-----
-project intern_application
-2024-03-14 13:44:00
-	create database
-	2024-03-08 20:27:55
-	make main.cpp to connect database
-	2024-03-08 20:27:55
-----
-continue improve deadline director project
-2024-03-14 13:44:16
-	add "Add Task" functionality such as adding subtasks to already existing task. 
-	2024-03-08 09:08:23
-	add "Edit Task" to edit current task and corresponding subtask
-	2024-03-08 09:08:23
-	Add ability to let user know that they finished that subtask. 
-	2024-03-08 09:08:23
+code DFS, BFS, and other search algorithms in different languages
+2024-03-13 22:15:30
+	c++
+	2024-03-08 15:34:05
+	golang
+	2024-03-08 15:34:05
+	javascript
+	2024-03-08 15:34:05
 ----
 ===========
 Done Challenges
-apply jobs
-2024-03-14 13:46:34
-----
-do 1 leetcode
-2024-03-14 13:46:34
-----
 ===========
 Unfinished Challenges
+blockchain projects
+2024-03-08 20:15:26
+----
 project intern_application
 2024-03-08 20:27:55
 	create database
 	2024-03-08 20:27:55
 	make main.cpp to connect database
 	2024-03-08 20:27:55
+----
+backend project
+2024-03-09 20:48:41
+	golang
+	2024-03-07 19:06:10
+	planetscale
+	2024-03-07 19:06:10
+	c++ and js
+	2024-03-07 19:06:10
 ----
 fullstack project idea "planning"
 2024-03-10 20:49:04
@@ -72,6 +71,15 @@ do homeworks
 	2024-03-11 12:50:15
 	253 lab (03/30/2024)
 	2024-03-11 12:50:15
+----
+continue improve deadline director project
+2024-03-12 17:03:36
+	add "Add Task" functionality such as adding subtasks to already existing task. 
+	2024-03-08 09:08:23
+	add "Edit Task" to edit current task and corresponding subtask
+	2024-03-08 09:08:23
+	Add ability to let user know that they finished that subtask. 
+	2024-03-08 09:08:23
 ----
 revise resume with Daniel's example. 
 2024-03-13 10:52:59

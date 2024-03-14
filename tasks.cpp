@@ -132,11 +132,11 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             cin >> num;
             if (num == 1)
             {
-                moveTask(doneChallenges,todayChallenges);
+                moveTask(doneChallenges, todayChallenges);
             }
             else
             {
-                moveTask(todayChallenges,unfinishedTask);
+                moveTask(todayChallenges, unfinishedTask);
             }
         }
         break;
@@ -392,64 +392,6 @@ void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
     }
 }
 
-// void fromTodayToDone(vector<Task> &todayChallenges, vector<Task> &doneChallenges)
-// {
-//     cout << endl;
-//     cout << "Move Mode" << endl;
-
-//     string taskNum;
-//     cout << "Please enter task number(s) (eg. 1,2,3): ";
-//     cin >> taskNum;
-//     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-//     // cout << "Please enter the task number: ";
-//     // int taskNum;
-//     // cin >> taskNum;
-
-//     for(char c : taskNum)
-//     {
-//         if(c != ',')
-//         {
-//             int taskNum = c - '0';
-//             doneChallenges.push_back(todayChallenges[taskNum - 1]);
-//             todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
-//         }
-//     }
-
-//     if (taskNum > (todayChallenges.size() + 1))
-//     {
-//         cout << "invalid input. Please try again !!. index size is bigger" << endl;
-//     }
-//     else
-//     {
-//         doneChallenges.push_back(todayChallenges[taskNum - 1]);
-//         todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
-//         cout << "Operation Successfull !!" << endl;
-//         cout << endl
-//              << endl;
-//     }
-// }
-
-void fromUnfishedToToday(vector<Task> &todayChallenges, vector<Task> &unfinishedTask)
-{
-    cout << "Move Mode" << endl;
-    cout << "Please enter the task: " << endl;
-    int taskNum;
-    cin >> taskNum;
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    if (taskNum > (unfinishedTask.size() + 1))
-    {
-        cout << "Invalid input. taskNum is bigger!!! " << endl;
-    }
-    else
-    {
-        unfinishedTask[taskNum - 1].dueDate = getCurrentTime();
-        todayChallenges.push_back(unfinishedTask[taskNum - 1]);
-        unfinishedTask.erase(unfinishedTask.begin() + (taskNum - 1));
-        cout << "Operation Successfull !!" << endl;
-    }
-}
-
 void deleteTask(vector<Task> &a)
 {
     cout << "Enter number: ";
@@ -533,38 +475,57 @@ void editTask(vector<Task> &task)
     }
 }
 
-void moveTask(vector<Task>&a, vector<Task>&b){
+void moveTask(vector<Task> &a, vector<Task> &b)
+{
     cout << endl;
     cout << "Move Mode\n";
 
     cout << "Please enter the number of task (e.g. 1,2,3): ";
-    string taskNum;
-    cin >> taskNum;
+    string taskNumList;
+    cin >> taskNumList;
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
     vector<Task> temp;
-    temp = b;
-    std::istringstream ss(taskNum);
+    copyTask(b, temp);
     string token;
-    // while (std::getline(ss, token, ','))
-    // {
-    //     int taskNum = stoi(token);
-    //     cout << taskNum << endl;
-    //     if (taskNum > b.size())
-    //     {
-    //         cout << "invalid input. Please try again !!. index size is bigger. Index : " << taskNum  << endl;
-    //     }else
-    //     {
-    //         temp[taskNum - 1].dueDate = getCurrentTime();
-    //         a.push_back(temp[taskNum - 1]);
-    //         b.erase(b.begin() + (taskNum - 1));
-    //     }
-        
-        
-    // }
+
+    for (char c : taskNumList)
+    {
+        if (c == ',')
+        {
+            continue;
+        }
+        else
+        {
+            int taskNum = c - '0';
+            if (taskNum > b.size())
+            {
+                cout << "invalid input. Please try again !!. index size is bigger. Index : " << taskNum << endl;
+            }
+            else
+            {
+                temp[taskNum - 1].dueDate = getCurrentTime();
+                a.push_back(temp[taskNum - 1]);
+                b.erase(b.begin() + (taskNum - 1));
+            }
+        }
+    }
 
     cout << "Operation Successfull !!" << endl;
     cout << endl
          << endl;
-    
+}
+
+void copyTask(vector<Task> &source, vector<Task> &destination)
+{
+    for (const Task &sourceTask : source)
+    {
+        Task newTask = Task(sourceTask.description, sourceTask.dueDate);
+        for (const Task &subTask : sourceTask.subTask)
+        {
+            Task newSubTask = Task(subTask.description, subTask.dueDate);
+            newTask.subTask.push_back(newSubTask);
+        }
+        destination.push_back(newTask);
+    }
 }
