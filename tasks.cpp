@@ -132,11 +132,11 @@ void displayMenu(vector<Task> &todayChallenges, vector<Task> &doneChallenges, ve
             cin >> num;
             if (num == 1)
             {
-                fromTodayToDone(todayChallenges, doneChallenges);
+                moveTask(todayChallenges, doneChallenges);
             }
             else
             {
-                fromUnfishedToToday(todayChallenges, unfinishedTask);
+                moveTask(todayChallenges,unfinishedTask);
             }
         }
         break;
@@ -392,28 +392,43 @@ void loadTasks(vector<Task> &a, vector<Task> &b, vector<Task> &c)
     }
 }
 
-void fromTodayToDone(vector<Task> &todayChallenges, vector<Task> &doneChallenges)
-{
-    cout << endl;
-    cout << "Move Mode" << endl;
-    cout << "Please enter the task number: ";
-    int taskNum;
-    cin >> taskNum;
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+// void fromTodayToDone(vector<Task> &todayChallenges, vector<Task> &doneChallenges)
+// {
+//     cout << endl;
+//     cout << "Move Mode" << endl;
 
-    if (taskNum > (todayChallenges.size() + 1))
-    {
-        cout << "invalid input. Please try again !!. index size is bigger" << endl;
-    }
-    else
-    {
-        doneChallenges.push_back(todayChallenges[taskNum - 1]);
-        todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
-        cout << "Operation Successfull !!" << endl;
-        cout << endl
-             << endl;
-    }
-}
+//     string taskNum;
+//     cout << "Please enter task number(s) (eg. 1,2,3): ";
+//     cin >> taskNum;
+//     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+//     // cout << "Please enter the task number: ";
+//     // int taskNum;
+//     // cin >> taskNum;
+
+//     for(char c : taskNum)
+//     {
+//         if(c != ',')
+//         {
+//             int taskNum = c - '0';
+//             doneChallenges.push_back(todayChallenges[taskNum - 1]);
+//             todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
+//         }
+//     }
+
+//     if (taskNum > (todayChallenges.size() + 1))
+//     {
+//         cout << "invalid input. Please try again !!. index size is bigger" << endl;
+//     }
+//     else
+//     {
+//         doneChallenges.push_back(todayChallenges[taskNum - 1]);
+//         todayChallenges.erase(todayChallenges.begin() + (taskNum - 1));
+//         cout << "Operation Successfull !!" << endl;
+//         cout << endl
+//              << endl;
+//     }
+// }
 
 void fromUnfishedToToday(vector<Task> &todayChallenges, vector<Task> &unfinishedTask)
 {
@@ -516,4 +531,45 @@ void editTask(vector<Task> &task)
     {
         // change the subtask
     }
+}
+
+void moveTask(vector<Task>&a, vector<Task>&b){
+    cout << endl;
+    cout << "Move Mode\n";
+
+    cout << "Please enter the number of task (e.g. 1,2,3): ";
+    string taskNum;
+    cin >> taskNum;
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    vector<Task> temp;
+    temp = b;
+
+    for (int i = 0; i < temp.size(); i++)
+    {
+        cout << i + 1 << ". " << temp[i].description << endl;
+    }
+    
+    std::istringstream ss(taskNum);
+    string token;
+    while (std::getline(ss, token, ','))
+    {
+        int taskNum = stoi(token);
+        cout << taskNum << endl;
+        if (taskNum > b.size())
+        {
+            cout << "invalid input. Please try again !!. index size is bigger. Index : " << taskNum  << endl;
+        }else
+        {
+            a.push_back(temp[taskNum - 1]);
+            b.erase(b.begin() + (taskNum - 1));
+        }
+        
+        
+    }
+
+    cout << "Operation Successfull !!" << endl;
+    cout << endl
+         << endl;
+    
 }

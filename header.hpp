@@ -57,4 +57,6 @@ void deleteTask(vector<Task> &a);
 void emptyAllDoneTask(vector<Task> &doneChallenges);
 //edit task
 void editTask(vector<Task>&task);
+//test moveTask
+void moveTask(vector<Task>&a, vector<Task>&b);
 #endif // !DOIT_CPP

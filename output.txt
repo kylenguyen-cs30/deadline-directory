@@ -1,56 +1,74 @@
-> dd
+❯ ./RUN
 =================================================================================================================================================
-JUST DO IT
+JUST DO IT 
 =================================================================================================================================================
 
-
-
-
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
 
 
 
 =================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
+Today Challenges 
 
-
-
-=================================================================================================================================================
-UNFINISHED
-1. do homeworks
-	1.1 471 handout (at 13, need 16)
-	1.2 471 lab group (04/02/2024)
-	1.3 253 lab (03/30/2024)
-	1.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
+1. revise resume with Daniel's example. 
 2. Discord project
-	2.1 leetcode + chatgpt + discord
-	2.2 discord + scheduler
-3. blockchain projects
-4. check graduation info
-5. make appointment with cs advisor
-6. algo mind project
+        2.1 leetcode + chatgpt + discord
+        2.2 discord + scheduler
+3. apply jobs
+4. do 1 leetcode
+5. code DFS, BFS, and other search algorithms in different languages
+        5.1 c++
+        5.2 golang
+        5.3 javascript
+
+
+
+=================================================================================================================================================
+DONES!!! 
+
+
+
+
+=================================================================================================================================================
+UNFINISHED 
+
+1. backend project
+        1.1 golang
+        1.2 planetscale
+        1.3 c++ and js
+2. algo mind project
+3. algo mind project
+4. make appointment with cs advisor
+5. project intern_application
+        5.1 create database
+        5.2 make main.cpp to connect database
+6. backend project
+        6.1 golang
+        6.2 planetscale
+        6.3 c++ and js
 7. backend project
-	7.1 golang
-	7.2 planetscale
-	7.3 c++ and js
+        7.1 golang
+        7.2 planetscale
+        7.3 c++ and js
+8. continue improve deadline director project
+        8.1 add "Add Task" functionality such as adding subtasks to already existing task. 
+        8.2 add "Edit Task" to edit current task and corresponding subtask
+        8.3 Add ability to let user know that they finished that subtask. 
+9. continue improve deadline director project
+        9.1 add "Add Task" functionality such as adding subtasks to already existing task. 
+        9.2 add "Edit Task" to edit current task and corresponding subtask
+        9.3 Add ability to let user know that they finished that subtask. 
+10. backend project
+        10.1 golang
+        10.2 planetscale
+        10.3 c++ and js
 
 
 
 =================================================================================================================================================
 COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
+1. Add Task  2. Move!!  3. Quick save (moved to Update)  4. Delete Task(still working on adding delete subtask)
+
+5. Edit  6. Update  7. Exit 
 
 
 
@@ -58,343 +76,91 @@ Command : 2
 Please choose directions
 1. Today Challenge -> Done!! 2. Unfinished -> Today Challenge
 2
+
 Move Mode
-Please enter the task:
-1
-Operation Successfull !!
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
-
-
-=================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
-
-
-
-=================================================================================================================================================
-UNFINISHED
-1. Discord project
-	1.1 leetcode + chatgpt + discord
-	1.2 discord + scheduler
-2. blockchain projects
-3. check graduation info
+Please enter the number of task (e.g. 1,2,3): 1,2
+1. backend project
+2. algo mind project
+3. algo mind project
 4. make appointment with cs advisor
-5. algo mind project
+5. project intern_application
 6. backend project
-	6.1 golang
-	6.2 planetscale
-	6.3 c++ and js
-7. do homeworks
-	7.1 471 handout (at 13, need 16)
-	7.2 471 lab group (04/02/2024)
-	7.3 253 lab (03/30/2024)
-	7.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-
-
-
-=================================================================================================================================================
-COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
-
-
-
-Command : 6
-
-
-Have a good day!!!
-> code cpp/deadline-director
-> dd
-=================================================================================================================================================
-JUST DO IT
-=================================================================================================================================================
-
-
-
-
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
-
-
-=================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
-
-
-
-=================================================================================================================================================
-UNFINISHED
-1. Discord project
-	1.1 leetcode + chatgpt + discord
-	1.2 discord + scheduler
-2. blockchain projects
-3. check graduation info
-4. make appointment with cs advisor
-5. algo mind project
-6. backend project
-	6.1 golang
-	6.2 planetscale
-	6.3 c++ and js
-7. do homeworks
-	7.1 471 handout (at 13, need 16)
-	7.2 471 lab group (04/02/2024)
-	7.3 253 lab (03/30/2024)
-	7.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-
-
-
-=================================================================================================================================================
-COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
-
-
-
-Command : 2
-Please choose directions
-1. Today Challenge -> Done!! 2. Unfinished -> Today Challenge
-2
-Move Mode
-Please enter the task:
+7. backend project
+8. continue improve deadline director project
+9. continue improve deadline director project
+10. backend project
 1
-Operation Successfull !!
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
-
-
-=================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
-
-
-
-=================================================================================================================================================
-UNFINISHED
-1. blockchain projects
-2. check graduation info
-3. make appointment with cs advisor
-4. algo mind project
-5. backend project
-	5.1 golang
-	5.2 planetscale
-	5.3 c++ and js
-6. do homeworks
-	6.1 471 handout (at 13, need 16)
-	6.2 471 lab group (04/02/2024)
-	6.3 253 lab (03/30/2024)
-	6.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-7. Discord project
-	7.1 leetcode + chatgpt + discord
-	7.2 discord + scheduler
-
-
-
-=================================================================================================================================================
-COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
-
-
-
-Command : 6
-
-
-Have a good day!!!
-> dd
-=================================================================================================================================================
-JUST DO IT
-=================================================================================================================================================
-
-
-
-
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
-
-
-=================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
-
-
-
-=================================================================================================================================================
-UNFINISHED
-1. blockchain projects
-2. check graduation info
-3. make appointment with cs advisor
-4. algo mind project
-5. backend project
-	5.1 golang
-	5.2 planetscale
-	5.3 c++ and js
-6. do homeworks
-	6.1 471 handout (at 13, need 16)
-	6.2 471 lab group (04/02/2024)
-	6.3 253 lab (03/30/2024)
-	6.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-7. Discord project
-	7.1 leetcode + chatgpt + discord
-	7.2 discord + scheduler
-
-
-
-=================================================================================================================================================
-COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
-
-
-
-Command : 2
-Please choose directions
-1. Today Challenge -> Done!! 2. Unfinished -> Today Challenge
 2
-Move Mode
-Please enter the task:
-4
 Operation Successfull !!
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
 
 
 =================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
+Today Challenges 
+
+1. revise resume with Daniel's example. 
+2. Discord project
+        2.1 leetcode + chatgpt + discord
+        2.2 discord + scheduler
+3. apply jobs
+4. do 1 leetcode
+5. code DFS, BFS, and other search algorithms in different languages
+        5.1 c++
+        5.2 golang
+        5.3 javascript
 
 
 
 =================================================================================================================================================
-UNFINISHED
-1. blockchain projects
-2. check graduation info
-3. make appointment with cs advisor
-4. backend project
-	4.1 golang
-	4.2 planetscale
-	4.3 c++ and js
-5. do homeworks
-	5.1 471 handout (at 13, need 16)
-	5.2 471 lab group (04/02/2024)
-	5.3 253 lab (03/30/2024)
-	5.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-6. Discord project
-	6.1 leetcode + chatgpt + discord
-	6.2 discord + scheduler
-7. algo mind project
+DONES!!! 
+
 
 
 
 =================================================================================================================================================
-COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
+UNFINISHED 
 
-
-
-Command : 2
-Please choose directions
-1. Today Challenge -> Done!! 2. Unfinished -> Today Challenge
-2
-Move Mode
-Please enter the task:
-1
-Operation Successfull !!
-=================================================================================================================================================
-Today Challenges
-1. continue improve deadline director project
-	1.1 add "Add Task" functionality such as adding subtasks to already existing task.
-	1.2 add "Edit Task" to edit current task and corresponding subtask
-	1.3 Add ability to let user know that they finished that subtask.
-2. code DFS, BFS, and other search algorithms in different languages
-	2.1 c++
-	2.2 golang
-	2.3 javascript
-
-
-
-=================================================================================================================================================
-DONES!!!
-1. do 1 leetcode
-	1.1 merge 2 sorted arrays
-2. apply job/interns
-
-
-
-=================================================================================================================================================
-UNFINISHED
-1. check graduation info
+1. algo mind project
 2. make appointment with cs advisor
-3. backend project
-	3.1 golang
-	3.2 planetscale
-	3.3 c++ and js
-4. do homeworks
-	4.1 471 handout (at 13, need 16)
-	4.2 471 lab group (04/02/2024)
-	4.3 253 lab (03/30/2024)
-	4.4 471 lab 2 HTTP GET/RESPONSE (03/13/2024)
-5. Discord project
-	5.1 leetcode + chatgpt + discord
-	5.2 discord + scheduler
-6. algo mind project
-7. blockchain projects
+3. project intern_application
+        3.1 create database
+        3.2 make main.cpp to connect database
+4. backend project
+        4.1 golang
+        4.2 planetscale
+        4.3 c++ and js
+5. backend project
+        5.1 golang
+        5.2 planetscale
+        5.3 c++ and js
+6. continue improve deadline director project
+        6.1 add "Add Task" functionality such as adding subtasks to already existing task. 
+        6.2 add "Edit Task" to edit current task and corresponding subtask
+        6.3 Add ability to let user know that they finished that subtask. 
+7. continue improve deadline director project
+        7.1 add "Add Task" functionality such as adding subtasks to already existing task. 
+        7.2 add "Edit Task" to edit current task and corresponding subtask
+        7.3 Add ability to let user know that they finished that subtask. 
+8. backend project
+        8.1 golang
+        8.2 planetscale
+        8.3 c++ and js
+9. backend project
+        9.1 golang
+        9.2 planetscale
+        9.3 c++ and js
+10. algo mind project
 
 
 
 =================================================================================================================================================
 COMMANDS
-1. Add Task  2. Move!!  3. Quick save  4. Delete Task 5. Update  6. Exit
+1. Add Task  2. Move!!  3. Quick save (moved to Update)  4. Delete Task(still working on adding delete subtask)
+
+5. Edit  6. Update  7. Exit 
 
 
+
+Command : 7
+
+
+Have a good day!!!
